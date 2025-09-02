@@ -4,7 +4,7 @@
 ![Version](https://img.shields.io/badge/Version-0.1.0-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-## [Backend Project](https://github.com/AdriaVH/5.2-PetApp-Backend)
+## Click to go to [Backend Project](https://github.com/AdriaVH/5.2-PetApp-Backend)
 
 ## 💻 Features
 
