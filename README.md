@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# 🐾 Virtual Pets - Frontend (React)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Frontend](https://img.shields.io/badge/Frontend-React-blue)
+![Version](https://img.shields.io/badge/Version-0.1.0-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-## Available Scripts
+## 💻 Features
 
-In the project directory, you can run:
+- 📝 **User Authentication**: Login and Register with role-based routing.
+- 🐶 **Pet Management**: Add, edit, delete, and view pets.
+- 👨‍💼 **Admin Dashboard**: View all pets for administrative purposes.
+- 🔒 **Private Routes**: Protect user and admin routes.
+- 🌐 **Responsive UI**: Built with TailwindCSS.
+- 📦 **API Integration**: Communicates with backend REST API.
 
-### `npm start`
+## ⚙️ Requirements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🐳 **Docker** (if running backend locally in container)
+- 🛠️ **Node.js >= 18**
+- 📦 **npm >= 9**
+- 🌐 **Internet Connection** (for API requests and package installation)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧩 Tech Stack
 
-### `npm test`
+- ⚛️ React 19
+- 🛠️ TailwindCSS 3
+- 📡 Axios for API calls
+- 🗂️ React Router v7 for navigation
+- 🔐 JWT-based Authentication
+- 🧪 React Testing Library for frontend tests
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Getting Started
 
-### `npm run build`
+### 1️⃣ Install Dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2️⃣ Configure Environment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Create a `.env` file in the root:
 
-### `npm run eject`
+```
+REACT_APP_API_URL=http://localhost:8080
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3️⃣ Run Development Server
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 4️⃣ Run Tests
 
-## Learn More
+```bash
+npm test
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 5️⃣ Build for Production
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm run build
+```
 
-### Code Splitting
+## 📂 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+src/
+ ├─ api/           # API request functions
+ ├─ components/    # Reusable UI components
+ │   ├─ auth/      # Login, Register, PrivateRoute
+ │   └─ pets/      # PetForm, PetList
+ ├─ context/       # AuthContext
+ ├─ pages/         # Home, Dashboard, AdminDashboard
+ ├─ App.js
+ ├─ index.js
+ └─ index.css
+```
 
-### Analyzing the Bundle Size
+## 🔗 API Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- POST `/auth/login` - Login user
+- POST `/auth/register` - Register user
+- GET `/pets` - Get user/admin pets
+- POST `/pets` - Add pet
+- PUT `/pets/:id` - Update pet
+- DELETE `/pets/:id` - Delete pet
 
-### Making a Progressive Web App
+## 🛡️ Authentication Flow
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. User logs in/registers via forms.
+2. JWT token is saved in `localStorage`.
+3. Protected routes use token to verify user role.
+4. Admin users can access `/admin` dashboard.
 
-### Advanced Configuration
+## 📄 Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- ⚠️ Ensure backend is running and accessible.
+- 🔄 The app automatically adds JWT token to API requests.
+- 🧪 Tests are configured with React Testing Library.
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
