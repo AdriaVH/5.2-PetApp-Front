@@ -1,3 +1,4 @@
+// src/context/AuthContext.js
 import React, { createContext, useContext, useState } from 'react';
 import { login as apiLogin, register as apiRegister } from '../api/api';
 
@@ -9,21 +10,31 @@ export const AuthProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : null;
   });
 
+  const normalizeRoles = (roleField) => {
+    if (!roleField) return [];
+    return Array.isArray(roleField) ? roleField : [roleField];
+  };
+
   const login = async (username, password) => {
     const response = await apiLogin({ username, password });
-    // Save role from backend
-    setUser({ username: response.username, token: response.token, role: response.role });
-    localStorage.setItem('user', JSON.stringify({ username: response.username, token: response.token, role: response.role }));
+    console.log('Raw backend login response:', response); // <-- Add this for debugging
+    const roles = normalizeRoles(response.roles); // <-- Use .roles here
+    const userData = { username: response.username, token: response.token, roles };
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
     localStorage.setItem('token', response.token);
-    return response;
+    return { ...response, roles };
   };
 
   const register = async (username, password) => {
     const response = await apiRegister({ username, password });
-    setUser({ username: response.username, token: response.token, role: response.role });
-    localStorage.setItem('user', JSON.stringify({ username: response.username, token: response.token, role: response.role }));
+    console.log('Raw backend register response:', response); // <-- Add this for debugging
+    const roles = normalizeRoles(response.roles); // <-- Use .roles here
+    const userData = { username: response.username, token: response.token, roles };
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
     localStorage.setItem('token', response.token);
-    return response;
+    return { ...response, roles };
   };
 
   const logout = () => {

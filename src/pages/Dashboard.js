@@ -12,10 +12,12 @@ function Dashboard() {
   };
 
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6 text-gray-800">My Virtual Pets</h1>
-      <PetForm petToEdit={editingPet} onSave={handleSave} />
-      <PetList onEdit={setEditingPet} refresh={refresh} />
+    <div className="dashboard-custom-bg">
+      <div className="container mx-auto p-6">
+        <h1 className="text-3xl font-bold mb-6 text-gray-800">My Virtual Pets</h1>
+        <PetForm petToEdit={editingPet} onSave={handleSave} />
+        <PetList onEdit={setEditingPet} refresh={refresh} />
+      </div>
     </div>
   );
 }
