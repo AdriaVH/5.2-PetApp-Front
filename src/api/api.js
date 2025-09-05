@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
 const axiosInstance = axios.create({
@@ -18,7 +17,9 @@ export const login = (data) => axiosInstance.post('/auth/login', data).then(res 
 export const register = (data) => axiosInstance.post('/auth/register', data).then(res => res.data);
 
 // Pet API
-export const getPets = () => axiosInstance.get('/pets').then(res => res.data);
+export const getPets = (page = 0, size = 10) =>
+  axiosInstance.get(`/pets?page=${page}&size=${size}`).then(res => res.data);
+
 export const createPet = (data) => axiosInstance.post('/pets', data).then(res => res.data);
 export const updatePet = (id, data) => axiosInstance.put(`/pets/${id}`, data).then(res => res.data);
 export const deletePet = (id) => axiosInstance.delete(`/pets/${id}`).then(res => res.data);
